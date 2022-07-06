@@ -1,0 +1,26 @@
+version: '3.8'
+
+services:
+   con: 
+    image: alpine
+    container_name: con
+    working_dir: /home
+    env_file:
+      - .env.local
+      - .env
+    environment:
+      - FOO=FOO_ENV
+    command: tail -f /dev/null
+
+   build-con: 
+    build:
+      context: . 
+      args:
+        - FOO=$FOO
+    container_name: build-con
+    env_file:
+      - .env.local
+      - .env
+    environment:
+      - FOO=FOO_ENV
+    command: tail -f /dev/null
