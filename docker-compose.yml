@@ -16,11 +16,5 @@ services:
     build:
       context: . 
       args:
-        - FOO=$FOO
+        - FOO
     container_name: build-con
-    env_file:
-      - .env.local
-      - .env
-    environment:
-      - FOO=FOO_ENV
-    command: tail -f /dev/null
